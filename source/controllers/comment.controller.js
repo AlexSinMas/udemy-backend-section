@@ -31,9 +31,9 @@ class CommentController {
         return res.send(deletedComment);
     }
 
-    async getIdeasComments(req,res){
+    async getIdeaComments(req,res){
         const {commentId} = req.params;
-        const comments = await _commentService.getIdeasComments(ideaId)
+        const comments = await _commentService.getIdeaComments(ideaId)
         return res.send(comments);
     }
 }

@@ -35,10 +35,10 @@ class IdeaController {
         return res.send(deletedIdea);
     }
 
-    async getIdeaByUser(){
+    async getIdeasByUser(){
         const {userId} = req.params;
         const ideas = await _ideaService.getIdeaByUser(userId);
-        return res.send( ideas);
+        return res.send(ideas);
     }
 
     async upvoteIdea(req,res){
