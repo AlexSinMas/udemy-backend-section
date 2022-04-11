@@ -29,7 +29,7 @@ class CommentService extends BaseService{
         return comments;
     }
 
-    async createcomment(comment, ideaId){
+    async createComment(comment, ideaId){
         if(!ideaId){
             const error = new Error();
             error.status = 400;

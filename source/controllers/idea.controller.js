@@ -5,14 +5,15 @@ class IdeaController {
         _ideaService = IdeaService;
     }
 
-    async get(req,res){
+    /*async get(req,res){
         const {ideaId} =  req.params;
-        const idea = await _userService.get(ideaId);
+        const idea = await _ideaService.get(ideaId);
         return res.send(idea);
-    }
+    }*/
 
     async getAll(req,res){
-        const ideas = await _userService.getAll();
+        const {userId} = req.params;
+        const ideas = await _ideaService.getIdeasByUser(userId);
         return res.send(ideas);
     }
 
@@ -37,7 +38,7 @@ class IdeaController {
 
     async getIdeasByUser(){
         const {userId} = req.params;
-        const ideas = await _ideaService.getIdeaByUser(userId);
+        const ideas = await _ideaService.getIdeasByUser(userId);
         return res.send(ideas);
     }
 

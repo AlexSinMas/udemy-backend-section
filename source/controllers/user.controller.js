@@ -1,5 +1,3 @@
-let _homeservice = null;
-
 let _userService = null
 
 class UserController {
@@ -17,6 +15,7 @@ class UserController {
         const users = await _userService.getAll();
         return res.send(users);
     }
+
 
     async update(req,res){
         const {body} = req;

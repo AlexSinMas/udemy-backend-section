@@ -1,10 +1,11 @@
 const BaseService = require('./base.service');
-let _IdeaRepository = null;
+let _IdeaRepository = null, _userRepository = null;
 
 class IdeaService extends BaseService{
-    constructor({IdeaRepository}) {
+    constructor({IdeaRepository, UserRepository}) {
         super(IdeaRepository);
         _IdeaRepository = IdeaRepository;
+        _userRepository = UserRepository;
     }
 
     async getIdeasByUser(author){
@@ -15,7 +16,7 @@ class IdeaService extends BaseService{
             throw error;
         }
 
-        return await _IdeaRepository.getIdeasByUser(author);
+        return await _IdeaRepository.getIdeasByUser(await _userRepository.getUserByName(author));
     }
     async upvoteIdea(ideaId){
         if(!ideaId){
